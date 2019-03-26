@@ -1,0 +1,15 @@
+{% extends 'market/base.html' %}
+{% block home_active %}active{% endblock %}
+{% block body_block %}class="options_page"{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="text-center" id="sty"><h3><strong>Welcome {{ user.username }}!!!</strong></h3></div><br>
+        <a href="{% url 'market:buysell' %}" class="btn btn-primary center-block btn-lg" role="button">Buy</a><br>
+        <a href="{% url 'market:sell' %}" class="btn btn-success center-block btn-lg" role="button">Sell</a><br>
+        <a href="{% url 'market:lost' %}" class="btn btn-info center-block btn-lg" role="button">Lost</a><br>
+        <a href="{% url 'market:found' %}" class="btn btn-warning center-block btn-lg" role="button">Found</a><br>
+        <a href="{% url 'market:rent' %}" class="btn btn-danger center-block btn-lg" role="button">Rent</a><br>
+        <a href="{% url 'market:to_let' %}" class="btn btn-default center-block btn-lg" role="button">To Let</a><br>
+    </div>
+{% endblock %}

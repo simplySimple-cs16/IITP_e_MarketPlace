@@ -1,0 +1,16 @@
+{% extends 'market/base_visitor.html' %}
+
+{% block head %}
+    <title>Logout</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1><strong>Logged Out!</strong></h1>
+        <h2>
+            You have logged out
+        </h2>
+        <h3><a href="{% url 'market:login' %}">Login again</a></h3>
+    </div>
+{% endblock %}
+

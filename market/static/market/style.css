@@ -1,0 +1,30 @@
+body{
+    background: white url('images/background.jpg');
+}
+html {
+    height: 100%;
+}
+
+
+.navbar{
+    border-radius: 0;
+}
+#sty{
+        font-family: 'Satisfy', cursive;
+
+}
+
+.navbar-brand {
+    font-family: 'Satisfy', cursive;
+}
+
+.options_page {
+    height: 100%;
+    background:  linear-gradient(
+            to bottom right,
+            rgba(195, 252, 250, 0),
+            rgba(65, 251, 241, 0.6)
+    ),url("images/IIT-Patna.jpg") no-repeat;
+    height: 100%;
+    background-size: cover;
+}

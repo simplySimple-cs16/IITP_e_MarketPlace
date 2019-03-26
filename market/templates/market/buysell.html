@@ -1,0 +1,100 @@
+{% extends 'market/base.html' %}
+{% block buy_active %}active{% endblock %}
+
+{% block body %}
+    <div class="albums-container container-fluid">
+
+
+        <!-- Items -->
+        <div class="row">
+            {% if items %}
+                <div class="text-center" id="sty"><h3><strong>My Items</strong></h3></div><br>
+                <div class="container">
+                 <!-- My Items -->
+                {% for item in items %}
+                    {% if user.username == item.userName %}
+
+                        <div class="col-sm-4 col-lg-2">
+                            <div class="thumbnail">
+
+                                <!-- Item Image -->
+
+                                <img src="{{ item.image.url }}">
+
+                                <div class="caption">
+                                    <h4>{{ item.name }}</h4>
+                                    <h4>Price : &#x20b9;{{ item.price }}</h4>
+                                    <h4>Contact : {{ item.contact }}</h4>
+
+
+                                    <!-- Delete Item -->
+                                    <form action="{% url 'market:bsItem-delete' item.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="item_id" value="{{ item.id }}" />
+                                        <button type="submit" class="btn btn-default btn-sm">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </form>
+
+                                    <!-- Edit or Update Item Details -->
+                                    <a href="{% url 'market:bsItem-update' item.id %}" class="btn btn-primary btn-sm" role="button">Edit</a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+
+
+                    {% endif %}
+
+                {% endfor %}
+
+                </div>
+
+
+                <br><br>
+                <!-- All Items -->
+                <div class="text-center" id="sty"><h3><strong>All Items</strong></h3></div><br>
+                {% for item in items %}
+                    <div class="col-sm-4 col-lg-2">
+                        <div class="thumbnail">
+
+                            <!-- Item Image -->
+
+                            <img src="{{ item.image.url }}">
+
+                            <div class="caption">
+                                <h4>{{ item.name }}</h4>
+                                <h4>Price : &#x20b9;{{ item.price }}</h4>
+                                <h4>Contact : {{ item.contact }}</h4>
+
+
+
+                                {% if user.username == 'root' %}
+                                    <!-- Delete Item -->
+                                    <form action="{% url 'market:bsItem-delete' item.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="item_id" value="{{ item.id }}" />
+                                        <button type="submit" class="btn btn-default btn-sm">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </form>
+
+                                    <!-- Edit or Update Item Details -->
+                                    <a href="{% url 'market:bsItem-update' item.id %}" class="btn btn-primary btn-sm" role="button">Edit</a>
+
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+                {% endfor %}
+            {% else %}
+                <h1>No Items</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
